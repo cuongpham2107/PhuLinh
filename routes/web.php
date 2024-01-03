@@ -16,29 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class , 'index'])->name('home');
 //Giới thiệu
 Route::get('/about', [\App\Http\Controllers\AboutController::class , 'index'])->name('about');
-//Phòng nghỉ
-Route::get('/rooms', [\App\Http\Controllers\RoomController::class , 'index'])->name('rooms');
-Route::get('/collections/{slug}', [\App\Http\Controllers\RoomController::class , 'collection'])->name('cleection');
-Route::get('/rooms/{slug}', [\App\Http\Controllers\RoomController::class , 'show'])->name('room.show');
-//Đặt phòng
-Route::get('/book', [\App\Http\Controllers\BookController::class , 'index'])->name('booking');
-Route::post('/book', [\App\Http\Controllers\BookController::class , 'store'])->name('book');
+Route::get('/about/{slug}', [\App\Http\Controllers\AboutController::class , 'show'])->name('about.show');
+
 //Bài viết
 Route::get('/posts', [\App\Http\Controllers\PostController::class , 'index'])->name('posts');
 Route::get('/posts/{slug}', [\App\Http\Controllers\PostController::class , 'show'])->name('posts.show');
-Route::get('/search',[\App\Http\Controllers\PostController::class , 'search'])->name('search');
+Route::get('/searchPost',[\App\Http\Controllers\PostController::class , 'searchPost'])->name('searchPost');
 //Liên hệ
 Route::get('/contact', [\App\Http\Controllers\ContactController::class , 'index'])->name('contact');
 Route::post('/contacts', [\App\Http\Controllers\ContactController::class , 'store'])->name('contacts');
-//Ẩm thực
-Route::get('/cuisines', [\App\Http\Controllers\CuisinesController::class , 'index'])->name('cuisines');
-Route::get('/cuisines/{slug}', [\App\Http\Controllers\CuisinesController::class , 'show'])->name('cuisines.show');
-//Dịch vụ
-Route::get('/services', [\App\Http\Controllers\ServiceController::class , 'index'])->name('service');
-Route::get('/services/{slug}', [\App\Http\Controllers\ServiceController::class , 'show'])->name('service.show');
-
-//Đa ngôn ngữ laravel
-Route::get('/greeting/{locale}', [\App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('lang');
+//Địa điểm
+Route::get('/locations', [\App\Http\Controllers\LocationController::class , 'index'])->name('locations');
+Route::get('/locations/{slug}', [\App\Http\Controllers\LocationController::class , 'show'])->name('locations.show');
+Route::get('/collections/{slug}', [\App\Http\Controllers\LocationController::class , 'collection'])->name('collection');
+Route::get('/search',[\App\Http\Controllers\LocationController::class , 'search'])->name('searchLocation');
+//Địa điểm
+Route::get('/events', [\App\Http\Controllers\EventController::class , 'index'])->name('events');
+Route::get('/events/{slug}', [\App\Http\Controllers\EventController::class , 'show'])->name('events.show');
 
 
 Route::group(['prefix' => 'admin'], function () {

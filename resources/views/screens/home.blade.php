@@ -1,515 +1,452 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="section_slider swiper-container">
-        <div class="swiper-wrapper">
-            @foreach ($homeBanners as $homeBanner)
-                <div class="swiper-slide">
-                    <a href="#" class="clearfix" title="">
-                        <picture>
-                            <source media="(min-width: 1200px)" srcset="{{ Voyager::image($homeBanner->image) }}">
-                            <source media="(min-width: 992px)" srcset="{{ Voyager::image($homeBanner->image) }}">
-                            <source media="(min-width: 569px)" srcset="{{ Voyager::image($homeBanner->image) }}">
-                            <source media="(max-width: 480px)" srcset="{{ Voyager::image($homeBanner->image) }}">
-                            <img width="1920" height="800" src="{{ Voyager::image($homeBanner->image) }}" alt=""
-                                class="img-responsive center-block" />
-                        </picture>
-                    </a>
+    <div id="pl-2" class="panel-layout">
+        <div id="pg-2-0" class="panel-grid panel-has-style">
+            <div class="banner_page panel-row-style panel-row-style-for-2-0">
+                <div id="pgc-2-0-0" class="panel-grid-cell">
+                    <div id="panel-2-0-0-0"
+                        class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                        data-index="0">
+                        <div class="textwidget custom-html-widget">
+                            <div id="creativeslider_79">
+                                @foreach ($homeBanners as $homeBanner)
+                                    <div class="banner_slider_item_1">
+                                        <div class="content_item">
+                                            <div class="image_banner">
+                                                <div class="ajax_image"><img decoding="async"
+                                                        src="{{ Voyager::image($homeBanner->image) }}" class="lazyload"
+                                                        loading="lazy" data-src="{{ Voyager::image($homeBanner->image) }}"
+                                                        alt="Banner slide home" width="1366" height="619"
+                                                        loading="lazy" /></div>
+                                            </div>
+                                            <div class="capiton-banner lazyload">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @endforeach
+            </div>
+        </div>
+
+        <div id="pg-2-1" class="panel-grid panel-has-style">
+            <div class="gioithieu panel-row-style panel-row-style-for-2-1">
+                <div id="pgc-2-1-0" class="panel-grid-cell">
+                    <div id="panel-2-1-0-0"
+                        class="so-panel widget widget_siteorigin-panels-builder panel-first-child panel-last-child"
+                        data-index="1">
+                        <div class="container panel-widget-style panel-widget-style-for-2-1-0-0">
+                            <div id="pl-w64c7719fa5fb8" class="panel-layout">
+                                <div id="pg-w64c7719fa5fb8-0" class="panel-grid panel-no-style">
+                                    <div id="pgc-w64c7719fa5fb8-0-0" class="panel-grid-cell">
+                                        <div id="panel-w64c7719fa5fb8-0-0-0"
+                                            class="so-panel widget widget_black-studio-tinymce widget_black_studio_tinymce panel-first-child panel-last-child"
+                                            data-index="0">
+                                            <div
+                                                class="text_custom panel-widget-style panel-widget-style-for-w64c7719fa5fb8-0-0-0">
+                                                <div class="widget-title">{{ $about->title }}</div>
+                                                <div class="textwidget">
+                                                    <p>{{ $about->excerpt }}</p>
+                                                    <p><a href="{{ route('about.show', $about->slug) }}">Đọc thêm</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="pgc-w64c7719fa5fb8-0-1" class="panel-grid-cell">
+                                        <div id="panel-w64c7719fa5fb8-0-1-0"
+                                            class="so-panel widget widget_media_image panel-first-child panel-last-child"
+                                            data-index="1"><img fetchpriority="high" width="603" height="400"
+                                                src="{{ Voyager::image($about->image) }}" class="lazyload" loading="lazy"
+                                                data-src="{{ Voyager::image($about->image) }}"
+                                                class="image wp-image-84  attachment-full size-full lazyload" alt=""
+                                                decoding="async" style="max-width: 100%; height: auto;" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pg-2-2" class="panel-grid panel-has-style">
+            <div class="project panel-row-style panel-row-style-for-2-2">
+                <div id="pgc-2-2-0" class="panel-grid-cell">
+                    <div id="panel-2-2-0-0"
+                        class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                        data-index="2">
+                        <div class="widget-title">Địa điểm du lịch</div>
+                        <div class="project_template row">
+                            @foreach ($locations as $location)
+                                <div class="wow fadeInUp col-xs-6 col-sm-6 col-md-4 project_item" data-wow-delay="0.1s">
+                                    <div class="content_item">
+                                        <div class="image">
+                                            <a href="{{ route('locations.show', $location->slug) }}" class="slide_item">
+                                                <img decoding="async" src="{{ Voyager::image($location->image) }}"
+                                                    class="lazyload" loading="lazy"
+                                                    data-src="{{ Voyager::image($location->image) }}"
+                                                    alt="{{ $location->title }}" width="370" height="250"
+                                                    loading="lazy" />
+                                            </a>
+                                        </div>
+                                        <div class="product-meta">
+                                            <div class="name">
+                                                <a href="{{ route('locations.show', $location->slug) }}"
+                                                    title="{{ $location->title }}"><span>{{ $location->title }}</span></a>
+                                            </div>
+                                            <div class="excerpt">
+                                                {{ $location->desc }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pg-2-3" class="panel-grid panel-has-style">
+            <div class="our_service panel-row-style panel-row-style-for-2-3">
+                <div id="pgc-2-3-0" class="panel-grid-cell">
+                    <div id="panel-2-3-0-0"
+                        class="so-panel widget widget_siteorigin-panels-builder panel-first-child panel-last-child"
+                        data-index="3">
+                        <div class="container panel-widget-style panel-widget-style-for-2-3-0-0">
+                            <div id="pl-w61de339f75568" class="panel-layout">
+                                <div id="pg-w61de339f75568-0" class="panel-grid panel-no-style">
+                                    <div id="pgc-w61de339f75568-0-0" class="panel-grid-cell">
+                                        <div id="panel-w61de339f75568-0-0-0"
+                                            class="so-panel widget widget_media_image panel-first-child panel-last-child"
+                                            data-index="0"><img width="530" height="570"
+                                                src="{{ Voyager::image($experience->image) }}" class="lazyload"
+                                                loading="lazy" data-src="{{ Voyager::image($experience->image) }}"
+                                                class="image wp-image-1272  attachment-full size-full lazyload"
+                                                alt="" decoding="async" style="max-width: 100%; height: auto;" />
+                                        </div>
+                                    </div>
+                                    <div id="pgc-w61de339f75568-0-1" class="panel-grid-cell">
+                                        <div id="panel-w61de339f75568-0-1-0"
+                                            class="so-panel widget widget_black-studio-tinymce widget_black_studio_tinymce panel-first-child panel-last-child"
+                                            data-index="1">
+                                            <div class="widget-title">{{ $experience->title }}<a
+                                                    href="{{ route('about.show', $experience->slug) }}">
+                                                    Xem thêm</a></div>
+                                            <div class="textwidget">
+                                                <p>
+                                                <div class="icon_chuyenmuc_template ">
+                                                    <ul class='cate-list unstyled'>
+                                                        <li class="list_item_1 ">
+                                                            <div class="content_item">
+                                                                <figure class="featured-thumbnail thumbnail">
+                                                                    <a href="{{ route('about.show', $experience->slug) }}"
+                                                                        title="Agroforestry">
+                                                                        <img decoding="async" class="lazyload lazyload"
+                                                                            alt="Agroforestry"
+                                                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                                                            class="lazyload" loading="lazy"
+                                                                            data-src="{{ asset('/assets/images/Layer-643.png') }}" />
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="chuyenmuc_meta">
+                                                                    <div class="cate_list_title">
+                                                                        <a class="cate-title"
+                                                                            href="{{ route('about.show', $experience->slug) }}"
+                                                                            rel="bookmark" title="Agroforestry">Lưu
+                                                                            trú</a>
+                                                                    </div>
+                                                                    <div class="description">
+                                                                        {{ $experience->excerpt }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        </li>
+                                                        <li class="list_item_2 ">
+                                                            <div class="content_item">
+                                                                <figure class="featured-thumbnail thumbnail">
+                                                                    <a href="{{ route('about.show', $experience->slug) }}"
+                                                                        title="Sustainable Tourism">
+                                                                        <img decoding="async" class="lazyload lazyload"
+                                                                            alt="Sustainable Tourism"
+                                                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                                                            class="lazyload" loading="lazy"
+                                                                            data-src="{{ asset('/assets/images/Layer-641.png') }}" />
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="chuyenmuc_meta">
+                                                                    <div class="cate_list_title">
+                                                                        <a class="cate-title"
+                                                                            href="{{ route('about.show', $experience->slug) }}"
+                                                                            rel="bookmark" title="Sustainable Tourism">Văn
+                                                                            hóa</a>
+                                                                    </div>
+                                                                    <div class="description">
+                                                                        {!! $experience->body !!}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container" style="text-align: center;padding-bottom: 50px;">
+                    {!! setting('site.video_home') !!}
+                </div>
+            </div>
+        </div>
+        <div id="pg-2-4" class="panel-grid panel-has-style">
+            <div class="new_home panel-row-style panel-row-style-for-2-4">
+                <div id="pgc-2-4-0" class="panel-grid-cell">
+                    <div id="panel-2-4-0-0"
+                        class="so-panel widget widget_siteorigin-panels-builder panel-first-child panel-last-child"
+                        data-index="4">
+                        <div class="container panel-widget-style panel-widget-style-for-2-4-0-0">
+                            <div id="pl-w61dbb66dd2abc" class="panel-layout">
+                                <div id="pg-w61dbb66dd2abc-0" class="panel-grid panel-no-style">
+                                    <div id="pgc-w61dbb66dd2abc-0-0" class="panel-grid-cell">
+                                        <div id="panel-w61dbb66dd2abc-0-0-0"
+                                            class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                                            data-index="0">
+                                            <div
+                                                class="widget_text text_title panel-widget-style panel-widget-style-for-w61dbb66dd2abc-0-0-0">
+                                                <div class="widget-title">Tin tức - Bài viết</div>
+                                                <div class="textwidget custom-html-widget"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pg-w61dbb66dd2abc-1" class="panel-grid panel-no-style">
+                                    <div id="pgc-w61dbb66dd2abc-1-0" class="panel-grid-cell">
+                                        <div id="panel-w61dbb66dd2abc-1-0-0"
+                                            class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                                            data-index="1">
+                                            <div class="textwidget custom-html-widget">
+                                                <div class="newhome_template row">
+                                                    @foreach ($posts_hot as $post)
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 list_post">
+                                                            <div class="content_item">
+                                                                <figure class="featured-thumbnail thumbnail">
+                                                                    <a href="{{ route('posts.show', $post->slug) }}">
+                                                                        <img decoding="async" class="lazyload lazyload"
+                                                                            alt="{{ $post->title }}" style="height: 250px"
+                                                                            src="{{ Voyager::image($post->image) }}"
+                                                                            class="lazyload" loading="lazy"
+                                                                            data-src="{{ Voyager::image($post->image) }}"
+                                                                            loading="lazy" />
+
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="post_meta">
+                                                                    <div class="title">
+                                                                        <a href="{{ route('posts.show', $post->slug) }}"
+                                                                            title="{{ $post->title }}">{{ $post->title }}</a>
+                                                                    </div>
+                                                                    <div class="excerpt"
+                                                                        style="display: -webkit-box;
+                                                                -webkit-line-clamp: 3;
+                                                                -webkit-box-orient: vertical;  
+                                                                overflow: hidden;">
+                                                                        {{ $post->excerpt }}
+                                                                    </div>
+                                                                    <div class="readmore">
+                                                                        <a href="{{ route('posts.show', $post->slug) }}"
+                                                                            title="{{ $post->title }}">Xem thêm [+]</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="pgc-w61dbb66dd2abc-1-1" class="panel-grid-cell">
+                                        <div id="panel-w61dbb66dd2abc-1-1-0"
+                                            class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                                            data-index="2">
+                                            <div class="widget-title">Tin tức khác</div>
+                                            <div class="textwidget custom-html-widget">
+                                                <div class="new_other_template ">
+                                                    @foreach ($posts as $post)
+                                                        <div class=" list_post">
+                                                            <div class="content_item">
+                                                                <figure class="featured-thumbnail thumbnail">
+                                                                    <a href="{{ route('posts.show', $post->slug) }}">
+                                                                        <img decoding="async" class="lazyload lazyload"
+                                                                            alt="{{ $post->title }}"
+                                                                            src="{{ Voyager::image($post->image) }}"
+                                                                            class="lazyload" loading="lazy"
+                                                                            data-src="{{ Voyager::image($post->image) }}" />
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="post_meta" style="margin-left: 10px">
+
+                                                                    <div class="title">
+                                                                        <a href="{{ route('posts.show', $post->slug) }}"
+                                                                            title="{{ $post->title }}">{{ $post->title }}</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                                <div class="read_more"><a href="{{ route('posts') }}">Tất cả bài viết<i
+                                                            class="far fa-chevron-right"></i></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pg-2-5" class="panel-grid panel-has-style">
+            <div class="video_review panel-row-style panel-row-style-for-2-5">
+                <div id="pgc-2-5-0" class="panel-grid-cell">
+                    <div id="panel-2-5-0-0"
+                        class="so-panel widget widget_siteorigin-panels-builder panel-first-child panel-last-child"
+                        data-index="5">
+                        <div class="container panel-widget-style panel-widget-style-for-2-5-0-0">
+                            <div id="pl-w62677351147ed" class="panel-layout">
+                                <div id="pg-w62677351147ed-0" class="panel-grid panel-no-style">
+                                    <div id="pgc-w62677351147ed-0-0" class="panel-grid-cell">
+                                        <div id="panel-w62677351147ed-0-0-0"
+                                            class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                                            data-index="0">
+                                            <div class="widget-title">Video</div>
+                                            <div class="textwidget custom-html-widget">
+                                                <div class="video_home_template row">
+                                                    @foreach ($videos as $video)
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 video_item">
+                                                            <div class="content_item">
+                                                                <figure class="featured-thumbnail thumbnail">
+                                                                    <a href="{{ route('events.show', $video->slug) }}">
+                                                                        <img decoding="async" alt="{{ $video->title }}"
+                                                                            src="{{ Voyager::image($video->image) }}"
+                                                                            class="lazyload" loading="lazy"
+                                                                            data-src="{{ Voyager::image($video->image) }}"
+                                                                            width="370" height="260" />
+                                                                        <div class="icon_video"></div>
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="post_meta">
+                                                                    <div class="content_meta">
+                                                                        <div class="title">
+                                                                            <a href="{{ route('events.show', $video->slug) }}"
+                                                                                title="{{ $video->title }}">{{ $video->title }}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="pgc-w62677351147ed-0-1" class="panel-grid-cell">
+                                        <div id="panel-w62677351147ed-0-1-0"
+                                            class="so-panel widget widget_aio_tab aio_posts_type_widget panel-first-child panel-last-child"
+                                            data-index="1">
+                                            <div class="widget-title">Phản hồi từ du khách</div>
+                                            <div id="aio-widget-aio_tab-1-template" class="nhanxet_template">
+                                                <ul>
+                                                    <li>
+                                                        <div class="title"><a
+                                                                class="tab widget-aio_tab-1-template2"><span>Nguyễn Thị Quỳnh <span>
+                                                                        </span> </span></a></div>
+                                                        <div id="widget-aio_tab-1-template2"
+                                                            class="tab_content widget-aio_tab-1-template">
+                                                            <div class="thumbnail"><img decoding="async"
+                                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                                                    class="lazyload" loading="lazy"
+                                                                    data-src="https://cred.org.vn/wp-content/uploads/2022/01/09P7858-4-e1642586017740.jpg"
+                                                                    alt="nhận xét"></div>
+                                                            <div class="nhanxet">Ngoài ra thiên nhiên đã ưu đãi ban tặng cho vùng đất này cảnh đẹp tự nhiên thực sự đặc sắc, hùng vĩ và nên thơ</div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="title"><a
+                                                                class="tab widget-aio_tab-1-template3"><span>Nguyễn
+                                                                    Văn Nam Anh </span></a></div>
+                                                        <div id="widget-aio_tab-1-template3"
+                                                            class="tab_content widget-aio_tab-1-template">
+                                                            <div class="thumbnail"><img decoding="async"
+                                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                                                    class="lazyload" loading="lazy"
+                                                                    data-src="https://cred.org.vn/wp-content/uploads/2021/12/nhanxet1.jpg"
+                                                                    alt="nhận xét"></div>
+                                                            <div class="nhanxet">Những năm gần đây, một hướng đi mới được huyện ưu tiên đó là việc xây dựng và phát triển các Làng văn hóa du lịch gắn với chương trình xây dựng Nông thôn mới..</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pg-2-8" class="panel-grid panel-has-style">
+            <div class="newsletter panel-row-style panel-row-style-for-2-8">
+                <div id="pgc-2-8-0" class="panel-grid-cell">
+                    <div id="panel-2-8-0-0"
+                        class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                        data-index="8">
+                        <div class="widget_text container panel-widget-style panel-widget-style-for-2-8-0-0">
+                            <div class="widget-title">Đăng kí nhận tin</div>
+                            <div class="textwidget custom-html-widget">
+                                <div class="wpcf7 no-js" id="wpcf7-f5-p2-o1" lang="en-US" dir="ltr">                      
+                                    <form action="{{ route('contacts') }}" method="post" class="wpcf7-form init"
+                                        aria-label="Contact form" novalidate="novalidate" data-status="init">
+                                        @csrf
+                                        <div class="list_group">
+                                            <p><span class="wpcf7-form-control-wrap" data-name="your-email"><input
+                                                        size="40"
+                                                        class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                                                        aria-required="true" aria-invalid="false"
+                                                        placeholder="Email của bạn" value="" type="email"
+                                                        name="email" /></span><input
+                                                    class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
+                                                    value="Gửi đi" />
+                                            </p>
+                                        </div>
+                                        <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <style>
-        @media (max-width: 600px) {
-            .img-responsive .center-block {
-                width: 1920px;
-                height: auto
-            }
-        }
-    </style>
-    <script>
-        var swiper = new Swiper('.section_slider', {
-            autoplay: {
-                delay: 4500,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            }
-        });
-    </script>
-
-    <section class="section_about" style="margin: 20px">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <div class="img-about">
-                        <img width="613" height="388" src="{{ Voyager::image($about->image) }}"
-                            data-src="{{ Voyager::image($about->image) }}" alt="Giới thiệu về chúng tôi">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <div class="content-introduce">
-                        <div class="title-frame">
-                            <span class="line-top"></span>
-                            <span class="line-right"></span>
-                            <span class="line-bottom"></span>
-                            <span class="line-left"></span>
-                            <span class="line-mask"></span>
-                            <div class="introduce-title-inner">
-                                <h3 class="entry-title">
-                                    <span class="name-intr">{{setting('site.title')}}</span><br><span class="title-intr">{{$about->title}}</span>
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="introduce-wrap">
-                            <p>{{$about->excerpt}}</p>
-                            <div class="div-xem-them clearfix">
-                                <a href="{{route('about')}}" title="Xem thêm">Xem thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section_tab_restaurant">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-xs-12">
-                    <div class="pro-tabs not-dqtab">
-                        <div class="e-tabs not-dqtab">
-                            <ul class="tabs tabs-title clearfix">
-                                @foreach ($services as $service)
-                                {{-- @dd($service); --}}
-                                   <li class="tab-link" data-tab="{{$service->slug}}">
-                                        <div class="item-name">
-                                            <img width="32" height="32"
-                                                src="{{ Voyager::image($service->icon) }}"
-                                                alt="{{$service->title}}" />
-                                            <p>{{$service->title}}</p>
-                                        </div>
-                                    </li> 
-                                @endforeach
-                            </ul>
-                            <div class="tab-float">
-                                @foreach ($services as $service)
-                                @php
-                                 $images = json_decode($service->images);
-                                //  dd($images);
-                                @endphp
-                                <div id="{{$service->slug}}" class="tab-content content_extab">
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                            <div class="title_us" style="height: 45px">
-                                                {{-- <p class="txt_1">Tiện nghi</p>
-                                                <p class="txt_1 txt_2">Sang trọng</p> --}}
-                                            </div>
-                                            <div class="img_nbox"><img width="395" height="499" alt="Khách sạn"                                                 
-                                                    src="{{ Voyager::image($images[0]) }}"
-                                                    data-src="{{ Voyager::image($images[0]) }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                            <div class="title_cont_us">
-                                                <p class="txt_title">{{$service->title}}</p>
-                                                <p class="txt_title_1">{{$service->desc}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                            <div class="img_nbo_2"><img width="395" height="567" alt="Khách sạn"                                                  
-                                                    src="{{ Voyager::image($images[1]) }}"
-                                                    data-src="{{ Voyager::image($images[1]) }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section_room_vip">
-        <div class="container">
-            <div class="title_module_index">
-                <h2 class="h2"><a href="phong-vip.html" title="Phòng VIP">Phòng VIP</a></h2>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12 col-sm-12">
-
-                    <div class="item_vip_big">
-                        <div class="img_vip_full"><a class="image_thumb" href="{{ route('room.show', $viprooms->slug) }}"
-                                ><img width="480" height="272"
-                                    src="{{ Voyager::image($viprooms->image) }}"
-                                    data-src="{{ Voyager::image($viprooms->image) }}"
-                                    alt="Ph&#242;ng đơn vip"></a></div>
-                        <div class="info-vip">
-                            <h3 class="name-room"><a href="{{ route('room.show', $viprooms->slug) }}" >{{$viprooms->title}}</a></h3>
-                            <div class="info-room">
-                                <div class="tag-rivew-smal">
-
-                                    <div class="tag-rivew">
-                                        <img width="512" height="512"
-                                            src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag-user.svg?1676011628150"
-                                            title="02 Khách">
-                                        <p>02 Khách</p>
-                                    </div>
-
-
-                                    <div class="tag-rivew">
-                                        <img width="512" height="512"
-                                            src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag-meters.svg?1676011628150"
-                                            title="35m²">
-                                        <p>35m²</p>
-                                    </div>
-                                </div>
-                                <div class="tag-room">
-                                    <ul class="list_tag_room">
-
-
-
-                                        <li>
-                                            <img width="32" height="32"
-                                                src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_1.svg?1676011628150"
-                                                alt="Cafe Buổi Sáng" />
-                                        </li>
-
-                                        <li>
-                                            <img width="32" height="32"
-                                                src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_2.svg?1676011628150"
-                                                alt="Gọi Đồ Ăn Tại Phòng" />
-                                        </li>
-
-
-                                        <li>
-                                            <img width="32" height="32"
-                                                src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_3.svg?1676011628150"
-                                                alt="Bếp Nấu Tại Phòng" />
-                                        </li>
-                                        <li>
-                                            <img width="32" height="32"
-                                                src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_4.svg?1676011628150"
-                                                alt="Bồn Tắm Hoa Sen" />
-                                        </li>
-
-                                        <li>
-                                            <img width="32" height="32"
-                                                src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_5.svg?1676011628150"
-                                                alt="Internet Không Dây" />
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="content-room-small">
-                                {{$viprooms->desc}}
-                            </div>
-                            <div class="vip-dat-hang">
-                                <a href="{{ route('room.show', $viprooms->slug) }}" title="Đặt phòng" class="btn-booking">ÐẶT PHÒNG TỪ
-                                    {{number_format($viprooms->price)}}₫/Đêm</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                {{-- @dd($viprooms); --}}
-
-
-                <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-xs-12 col-sm-12">
-                    <div class="row row-room">
-                        @php
-                        $images_room = json_decode($viprooms->images);
-                        // dd($images);
-                       @endphp
-                        @foreach ($images_room as $room)
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="item-vip-small">
-                                <a  href="{{ route('room.show', $viprooms->slug) }}" title=""><img
-                                       style="height: 247px"
-                                        src="{{ Voyager::image($room) }}"
-                                        data-src="{{ Voyager::image($room) }}"
-                                        alt=""></a>
-                                <div class="name_price clearfix">
-                                    <h3 class="name-room"><a href="#"
-                                            title=""></a></h3>
-                                    <span class="price"></span>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="section_room" style="padding-top: 30px;">
-        <div class="container">
-            <div class="title_module_index">
-                {{-- <h2 class="h2"><a href="" title="Phòng">Phòng</a></h2> --}}
-            </div>
-            <div class="row row-room">
-              @foreach ($rooms as $room)
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="item_product_main">
-                    <div class="alper-product-item">
-                        <div class="item-product-img"><a class="image_thumb" href="{{ route('room.show', $viprooms->slug) }}"
-                               ><img width="480" height="272"
-                                    
-                                    src="{{ Voyager::image($room->image) }}"
-                                    data-src="{{ Voyager::image($room->image) }}"></a></div>
-                        <div class="info-room clearfix">
-                            <h3 class="name-room"><a href=""
-                                   >{{$room->title}}</a>
-                            </h3>
-                            <div class="tag-room">
-                                <ul class="list_tag_room">
-
-                                    <li>
-                                        <img width="32" height="32"
-                                            src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_1.svg?1676011628150"
-                                            alt="Cafe Buổi Sáng" />
-                                    </li>
-
-                                    <li>
-                                        <img width="32" height="32"
-                                            src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_4.svg?1676011628150"
-                                            alt="Bồn Tắm Hoa Sen" />
-                                    </li>
-
-                                    <li>
-                                        <img width="32" height="32"
-                                            src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/tag_icon_5.svg?1676011628150"
-                                            alt="Internet Không Dây" />
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="tag-rivew">
-                                <ul class="list_tag_review">
-
-                                    <li>02 Khách</li>
-                                    <li>20m²</li>
-
-                                </ul>
-                            </div>
-                            <div class="product-info-room">
-                                <div class="price-room">
-                                    <span class="price">{{number_format($room->price)}}₫/Đêm</span>
-                                </div>
-                                <div class="booking-room">
-                                    <a href="{{ route('room.show', $viprooms->slug) }}" title="Đặt phòng" class="btn-booking">ÐẶT
-                                        PHÒNG</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-              @endforeach
-                
-
-            </div>
-
-        </div>
-    </section>
-
-    <section class="section_am_thuc">
-        <div class="container">
-            <div class="title_module_index">
-                <h2 class="h2">
-                    <a href="{{route('cuisines')}}" title="Ẩm thực">Ẩm thực</a>
-                </h2>
-            </div>
-            <div class="tabwrap not-dqtab e-tabs ajax-tab-1" data-section="ajax-tab-1">
-                <div class="uwrap_tab">
-                    <div class="tab-content tab-1 current">
-
-                        <div class="row">
-                            
-                            @foreach ($foods as $item)
-                              <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 product-col">
-                                <div class="item_product_main">
-                                    <form class="variants product-action"  enctype="multipart/form-data">
-                            
-                                        <div class="product-thumbnail">
-                                            <a class="image_thumb" href="{{ route('cuisines.show', $item->slug) }}"
-                                                title="{{$item->title}}"><img width="480" height="360"
-                                                   
-                                                    src="{{ Voyager::image($item->image) }}"
-                                                    data-src="{{ Voyager::image($item->image) }}"
-                                                    alt="{{$item->title}}"></a>
-                                        </div>
-                                        <div class="product-info">
-                                            <h3 class="product-name"><a href="{{ route('cuisines.show', $item->slug) }}"
-                                                    title="{{$item->title}}">{{$item->title}}</a>
-                                            </h3>
-                                            <div class="price-box">
-                                                <span class="price">{{number_format($item->price)}}₫</span>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                    </form>
-
-                                </div>
-                            </div>  
-                            @endforeach
-                            
-
-                        </div>
-                        <div class="show-more-pro">
-                            <a href="{{route('cuisines')}}" title="Xem thêm" class="a-show-more">Xem thêm</a>
-                        </div>
-
-                    </div>
-
-                    <div class="tab-content tab-2">
-                        <div class="row">
-                            
-                            @foreach ($foods as $item)
-                              <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 product-col">
-                                <div class="item_product_main">
-                                    <form action="https://bean-hotel.mysapo.net/cart/add" method="post"
-                                        class="variants product-action" data-id="product-actions-28829661"
-                                        enctype="multipart/form-data">
-                                        <div class="product-thumbnail">
-                                            <a class="image_thumb" href="mi-xao-bo.html"
-                                                title="M&#236; x&#224;o b&#242;"><img width="480" height="360"
-                                                   
-                                                    src="{{ Voyager::image($item->image) }}"
-                                                    data-src="{{ Voyager::image($item->image) }}"
-                                                    alt="M&#236; x&#224;o b&#242;"></a>
-
-                                            <div class="sale-label"><span class="smart">- 20% </span></div>
-                                            <div class="group_action">
-                                                <input type="hidden" name="variantId" value="77487981" />
-                                                <button
-                                                    class="btn-anima hidden-xs btn-buy btn-cart btn-left btn btn-views left-to add_to_cart active "
-                                                    title="Mua ngay">
-                                                    <img width="24" height="24"
-                                                        src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/cart-add.svg?1676011628150"
-                                                        alt="Mua ngay" />
-                                                </button>
-                                                <a title="Xem nhanh" href="mi-xao-bo.html" data-handle="mi-xao-bo"
-                                                    class="btn-anima hidden-xs xem_nhanh btn-circle btn-views btn_view btn right-to quick-view">
-                                                    <img width="24" height="24"
-                                                        src="http://bizweb.dktcdn.net/100/472/947/themes/888072/assets/view.svg?1676011628150"
-                                                        alt="Xem nhanh" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            <h3 class="product-name"><a href="mi-xao-bo.html"
-                                                    title="M&#236; x&#224;o b&#242;">{{$item->title}}</a>
-                                            </h3>
-                                            <div class="price-box">
-                                                <span class="price">{{number_format($item->price)}}₫</span>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>  
-                            @endforeach
-                            
-
-                        </div>
-                        <div class="show-more-pro">
-                            <a href="mon-an.html" title="Xem thêm" class="a-show-more">Xem thêm</a>
-                        </div>
-                    </div>
-
-                    <div class="tab-content tab-3">
-                        <div class="row">
-                            
-                            @foreach ($foods as $item)
-                              <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 product-col">
-                                <div class="item_product_main">
-                                    <form action="https://bean-hotel.mysapo.net/cart/add" method="post"
-                                        class="variants product-action" data-id="product-actions-28829661"
-                                        enctype="multipart/form-data">
-                                        <div class="product-thumbnail">
-                                            <a class="image_thumb" href="mi-xao-bo.html"
-                                                title="M&#236; x&#224;o b&#242;"><img width="480" height="360"
-                                                   
-                                                    src="{{ Voyager::image($item->image) }}"
-                                                    data-src="{{ Voyager::image($item->image) }}"
-                                                    alt="M&#236; x&#224;o b&#242;"></a>
-
-                                            
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            <h3 class="product-name"><a href="mi-xao-bo.html"
-                                                    title="M&#236; x&#224;o b&#242;">{{$item->title}}</a>
-                                            </h3>
-                                            <div class="price-box">
-                                                <span class="price">{{number_format($item->price)}}₫</span>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>  
-                            @endforeach                           
-                        </div>                  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="secttion_blogs">
-        <div class="container">
-            <div class="title_module_index">
-                <h2 class="h2">
-                    <a href="" title="Tin tức">Tin tức</a>
-                </h2>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row row-room">
-                @foreach ($posts as $post)
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12">
-                    <div class="item_blog_index clearfix">
-                        <div class="img-blog">
-                            <a class="image-blog" href="{{ route('posts.show', $post->slug) }}"
-                                title="{{$post->title}}">
-
-                                <img width="480" height="288"
-                                    src="{{ Voyager::image($post->image) }}"
-                                    data-src=""
-                                    alt="{{$post->title}}"
-                                    class=" img-responsive" />
-
-                            </a>
-                        </div>
-                        <div class="blog_content">
-                            <h3><a href="{{ route('posts.show', $post->slug) }}"
-                                    title="{{$post->title}}">{{$post->title}}</a></h3>
-                            <p class="blog_description">{{$post->excerpt}}</p>
-                            <p class="update_date clearfix">
-                                <span class="user_name"></span>
-                                <span class="user_date"> 	{{ $post->created_at->format('d/m/Y') }}</span>
-                            </p>
-                            <a class="btn blog_read_more" href="{{ route('posts.show', $post->slug) }}"
-                                title="Đọc thêm">Ðọc
-                                Thêm</a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    
 @stop

@@ -9,24 +9,21 @@ class HomeController extends Controller
     public function index()
   {
     $homeBanners = \App\Banner::where('status', 'ACTIVE')->get();
-    $about = \TCG\Voyager\Models\Page::where('status', 'ACTIVE')->first();
-    $services = \App\Service::where('status', 'ACTIVE')->orderBy('id', 'ASC')->get();
-    $viprooms = \App\Room::where('category_id', 3)->first();
-    $rooms = \App\Room::where('category_id', 2)->limit(6)->get();
-    $doublerooms = \App\Room::where('category_id', 2)->limit(4)->get();
-    $foods = \App\Cuisine::Where('status' , 'ACTIVE')->limit(8)->get();
-    $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->limit(3)->get();
-    // dd($foods);
+    $locations = \App\Location::where('status', 'ACTIVE')->limit(3)->orderBy('id', 'DESC')->get();
+    $about = \TCG\Voyager\Models\Page::where('status', 'ACTIVE')->where('slug', 'gioi-thieu')->first();
+    $experience = \TCG\Voyager\Models\Page::where('status', 'ACTIVE')->where('slug', 'trai-nghiem')->first();
+    $posts_hot = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->orderBy('id', 'DESC')->where('featured', 1)->limit(2)->get();
+    $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->where('featured', 0)->orderBy('id', 'DESC')->limit(4)->get();
+    $videos = \App\Event::where('status', 'ACTIVE')->where('type', 'video')->limit(2)->orderBy('id', 'DESC')->get();
+    // dd($posts_hot);
     return view('screens.home', [
         'homeBanners' => $homeBanners,
         'about' => $about,
-        'rooms' => $rooms,
-        'doublerooms' => $doublerooms,
-        'viprooms' => $viprooms,
-        // 'room' => $room,
-        'foods' => $foods,
-        'services' => $services,
-        'posts' => $posts    
+        'posts_hot' => $posts_hot,
+        'posts' => $posts,
+        'locations' => $locations,
+        'experience'=> $experience,
+        'videos'=> $videos  
       ]);
   }
 }

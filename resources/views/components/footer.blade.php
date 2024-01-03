@@ -1,164 +1,131 @@
 @php
-    $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')
-        ->limit(3)
-        ->get();
-    $menu = menu('home_menu', '_json');
-    $homeBanners = \App\Banner::where('status', 'ACTIVE')->first();
+$menu = menu('home_menu', '_json');
+// dd($menu);
+$locations = \App\Location::where('status', 'ACTIVE')->limit(6)->orderBy('id', 'DESC')->get();
 @endphp
 
-<footer class="footer lazyload" data-src="{{ asset('/assets/bg_footer_1.jpg') }}"
-    style="background-image: url('{{ asset('/assets/bg_footer_1383b.jpg') }}');">
-    <div class="footer-top hidden-sm hidden-xs">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12">
-                    <div class="div-content-sup">
-                        <h3 class="title_sup">Hotline hỗ trợ</h3>
-                        <div class="phone_sup">
-                            <a title="{{ setting('site.phone') }}"
-                                href="{{ setting('site.phone') }}">0{{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1 $2 $3', setting('site.phone')) }}</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12">
-                    <div class="div-content-sup">
-                        <h3 class="title_sup">Email hỗ trợ</h3>
-                        <div class="phone_sup">
-                            <a title="{{ setting('site.email') }}"
-                                href="mailto:{{ setting('site.email') }}">{{ setting('site.email') }}</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12">
-                    <div class="div-content-sup">
-                        <h3 class="title_sup">Đăng ký nhận tin</h3>
-                        <div class="subscribe_form">
-                            <form action="{{ route('contacts') }}" method="post">
-                                @csrf
-                                <input type="email" class="form-control" value="" placeholder="Email của bạn"
-                                    name="email">
-                                <button name="subscribe" id="subscribe">Đăng ký</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12">
-                    <div class="div-content-sup">
-                        <h3 class="title_sup">Kết nối chúng tôi</h3>
-                        <div class="social-sup">
-                            <ul>
-
-                                <li class="facebook">
-                                    <a href="#" title="Facebook" target="_blank" rel="nofollow">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="25px"
-                                            viewBox="0 0 96.124 96.123" style="enable-background:new 0 0 96.124 96.123;"
-                                            xml:space="preserve">
-                                            <path
-                                                d="M72.089,0.02L59.624,0C45.62,0,36.57,9.285,36.57,23.656v10.907H24.037c-1.083,0-1.96,0.878-1.96,1.961v15.803   c0,1.083,0.878,1.96,1.96,1.96h12.533v39.876c0,1.083,0.877,1.96,1.96,1.96h16.352c1.083,0,1.96-0.878,1.96-1.96V54.287h14.654   c1.083,0,1.96-0.877,1.96-1.96l0.006-15.803c0-0.52-0.207-1.018-0.574-1.386c-0.367-0.368-0.867-0.575-1.387-0.575H56.842v-9.246   c0-4.444,1.059-6.7,6.848-6.7l8.397-0.003c1.082,0,1.959-0.878,1.959-1.96V1.98C74.046,0.899,73.17,0.022,72.089,0.02z"
-                                                data-original="#000000" class="active-path" data-old_color="#000000"
-                                                fill="#EBE7E7"></path>
-                                        </svg>
-                                    </a>
-                                </li>
-
-                                <li class="instagram">
-                                    <a href="#" title="Instagram" target="_blank" rel="nofollow">
-                                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="m75 512h362c41.355469 0 75-33.644531 75-75v-362c0-41.355469-33.644531-75-75-75h-362c-41.355469 0-75 33.644531-75 75v362c0 41.355469 33.644531 75 75 75zm-45-437c0-24.8125 20.1875-45 45-45h362c24.8125 0 45 20.1875 45 45v362c0 24.8125-20.1875 45-45 45h-362c-24.8125 0-45-20.1875-45-45zm0 0">
-                                            </path>
-                                            <path
-                                                d="m256 391c74.4375 0 135-60.5625 135-135s-60.5625-135-135-135-135 60.5625-135 135 60.5625 135 135 135zm0-240c57.898438 0 105 47.101562 105 105s-47.101562 105-105 105-105-47.101562-105-105 47.101562-105 105-105zm0 0">
-                                            </path>
-                                            <path
-                                                d="m406 151c24.8125 0 45-20.1875 45-45s-20.1875-45-45-45-45 20.1875-45 45 20.1875 45 45 45zm0-60c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0">
-                                            </path>
-                                        </svg>
-                                    </a>
-                                </li>
-
-                                <li class="youtube">
-                                    <a href="#" title="Youtube" target="_blank" rel="nofollow">
-                                        <svg viewBox="-21 -117 682.66672 682" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="m626.8125 64.035156c-7.375-27.417968-28.992188-49.03125-56.40625-56.414062-50.082031-13.703125-250.414062-13.703125-250.414062-13.703125s-200.324219 0-250.40625 13.183593c-26.886719 7.375-49.03125 29.519532-56.40625 56.933594-13.179688 50.078125-13.179688 153.933594-13.179688 153.933594s0 104.378906 13.179688 153.933594c7.382812 27.414062 28.992187 49.027344 56.410156 56.410156 50.605468 13.707031 250.410156 13.707031 250.410156 13.707031s200.324219 0 250.40625-13.183593c27.417969-7.378907 49.03125-28.992188 56.414062-56.40625 13.175782-50.082032 13.175782-153.933594 13.175782-153.933594s.527344-104.382813-13.183594-154.460938zm-370.601562 249.878906v-191.890624l166.585937 95.945312zm0 0" />
-                                        </svg></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="mid-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="logo-foo">
-                        <a href="{{ route('home') }}" class="logo-footer" title="Bean Hotel"><img width="220"
-                                height="68" src="{{ Voyager::image(setting('site.logo')) }}"
-                                data-src="{{ Voyager::image(setting('site.logo')) }}" alt="Bean Hotel"></a>
-                    </div>
-                    <div class="content-des">{{ setting('site.description') }}</div>
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 col-xl-4 footer-click">
-                    <h4 class="title-menu clicked">
-                        Bài viết mới
-                    </h4>
-                    <ul class="list-menu toggle-mn hidden-mob">
-                        @foreach ($posts as $post)
-                            <li class="item_blog">
-                                <div class="post-info">
-                                    <div class="enti-title">
-                                        <a href="10-xu-huong-thinh-hanh-trong-nganh-khach-san-2022.html"
-                                            title="10 xu hướng thịnh hành trong ngành khách sạn 2022">{{ $post->title }}</a>
+<footer class="nav-footer section">
+    <div class="footer_page">
+        <div id="siteorigin-panels-builder-2" class="visible-all-devices widget">
+            <div id="pl-w624ff5db269b4" class="panel-layout">
+                <div id="pg-w624ff5db269b4-0" class="panel-grid panel-has-style">
+                    <div class="panel-row-style panel-row-style-for-w624ff5db269b4-0">
+                        <div id="pgc-w624ff5db269b4-0-0" class="panel-grid-cell">
+                            <div id="panel-w624ff5db269b4-0-0-0"
+                                class="so-panel widget widget_siteorigin-panels-builder panel-first-child panel-last-child"
+                                data-index="0">
+                                <div
+                                    class="container panel-widget-style panel-widget-style-for-w624ff5db269b4-0-0-0">
+                                    <div id="pl-w624ff5db26a43" class="panel-layout">
+                                        <div id="pg-w624ff5db26a43-0" class="panel-grid panel-no-style">
+                                            <div id="pgc-w624ff5db26a43-0-0" class="panel-grid-cell">
+                                                <div id="panel-w624ff5db26a43-0-0-0"
+                                                    class="so-panel widget widget_black-studio-tinymce widget_black_studio_tinymce panel-first-child panel-last-child"
+                                                    data-index="0">
+                                                    <div
+                                                        class="contact_foot panel-widget-style panel-widget-style-for-w624ff5db26a43-0-0-0">
+                                                        <div class="widget-title">Liên hệ</div>
+                                                        <div class="textwidget">
+                                                            <ul>
+                                                                <li><i class="fas fa-map-marker-alt"></i><span
+                                                                        style="font-weight: 400;">{{setting('site.address')}}</span></li>
+                                                                <li><i class="fas fa-phone-rotary"></i>{{setting('site.phone')}}</li>
+                                                                <li><i
+                                                                        class="fas fa-id-card"></i>{{setting('site.email')}}
+                                                                </li>
+                                                                
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="pgc-w624ff5db26a43-0-1" class="panel-grid-cell">
+                                                <div id="panel-w624ff5db26a43-0-1-0"
+                                                    class="so-panel widget widget_nav_menu panel-first-child panel-last-child"
+                                                    data-index="1">
+                                                    <div class="widget-title">Địa điểm</div>
+                                                    <div class="menu-menu-service-footer-container">
+                                                        <ul id="menu-menu-service-footer" class="menu">
+                                                            @foreach ($locations as $location)
+                                                            <li id="menu-item-87"
+                                                                class="menu-item menu-item-type-taxonomy menu-item-object-service-category menu-item-87">
+                                                                <a
+                                                                    href="{{ route('locations.show', $location->slug) }}">{{$location->title}}</a></li>
+                                                            @endforeach
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="pgc-w624ff5db26a43-0-2" class="panel-grid-cell">
+                                                <div id="panel-w624ff5db26a43-0-2-0"
+                                                    class="so-panel widget widget_creative_gallery_image creative_posts_type_widget panel-first-child panel-last-child"
+                                                    data-index="2">
+                                                    <div
+                                                        class="img_foot panel-widget-style panel-widget-style-for-w624ff5db26a43-0-2-0">
+                                                        <div class="widget-title">Hình ảnh</div>
+                                                        <div id="aio-widget-creative_gallery_image-1-template"
+                                                            class="creative_gallery_image creative_gallery_image_deafault">
+                                                            <ul>
+                                                                @foreach ($locations as $location)
+                                                                <li
+                                                                    class=" col-xs-6 col-sm-6 col-md-4 list_item_image">
+                                                                    <div class="content_image">
+                                                                        <figure
+                                                                            class="featured-thumbnail thumbnail">
+                                                                            <div class="ajax_image">
+                                                                                <img class="item_image"
+                                                                                    id="giaiphap_1"
+                                                                                    alt="creative_gallery_image_aio-widget-creative_gallery_image-1-template"
+                                                                                    loadding="lazy"
+                                                                                    src="{{ Voyager::image($location->image) }}" />
+                                                                            </div>
+                                                                        </figure>
+                                                                        <div class="creative_image_meta">
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="pgc-w624ff5db26a43-0-3" class="panel-grid-cell">
+                                                <div id="panel-w624ff5db26a43-0-3-0"
+                                                    class="widget_text so-panel widget widget_custom_html panel-first-child panel-last-child"
+                                                    data-index="3">
+                                                    <div class="widget-title">Theo dõi</div>
+                                                    <div class="textwidget custom-html-widget">
+                                                        <div class="social">
+                                                            <a class="social_face"
+                                                                href="{{setting('site.facebook')}}"><i
+                                                                    class="fab fa-facebook-square"
+                                                                    aria-hidden="true"></i><span>Facebook</span></a>
+                                                            <a class="social_youtube"
+                                                                href="{{setting('site.youtube')}}"><i
+                                                                    class="fab fa-youtube"></i><span>Youtube</span></a>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="post-time">{{ $post->created_at->format('d/m/Y') }}</p>
                                 </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-xs-12 col-md-5 col-lg-2 col-xl-4 footer-click">
-                    <h4 class="title-menu clicked">
-                        Menu
-                    </h4>
-                    <ul class="list-menu toggle-mn hidden-mob">
-                        @foreach ($menu as $item)
-                            <li class=" li_menu @if ($item->url == '/' . Route::current()->uri) active @endif">
-                                <a class="nav-link" href="{{ asset($item->url) }}">{{ $item->title }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
             </div>
         </div>
     </div>
-    <div class="bg-footer-bottom copyright clearfix">
+    <div class="copyright">
         <div class="container">
-            <div class="row tablet">
-                <div id="copyright" class="col-lg-12 col-md-12 col-xs-12 fot_copyright">
-                    <span class="wsp">
+            <div id="footer-text" class="footer-text">
 
-                        <span class="mobile">© Bản quyền thuộc về <b>{{ setting('site.title') }}</b>
-                            <span class="dash hidden-xs">|</span>
-                        </span>
-
-                        <span class="opacity1">Cung cấp bởi</span>
-
-                        <a href="" rel="nofollow" title="KennaTech" target="_blank">KennaTech</a>
-
-                    </span>
-                </div>
+                <p>Copyright © {{ date('Y') }} {{ setting('site.title') }}</p> All rights reserved. Created by <a style="color: #47b131;" href="http://kennatech.vn" target="_blank" rel="noopener noreferrer">KennaTech</a>.
             </div>
-
-            <a href="#" class="backtop" title="Lên đầu trang"><i class="icon-up"></i></a>
-
         </div>
     </div>
 </footer>

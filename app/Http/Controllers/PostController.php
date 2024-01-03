@@ -8,7 +8,7 @@ class PostController extends Controller
 {
     public function index()
     {
-      $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->paginate(6);
+      $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->orderBy('id', 'DESC')->paginate(6);
       $pageMeta = [
         'title' => 'Tin tức bài viết',
         ];
@@ -20,17 +20,17 @@ class PostController extends Controller
 
         $post = \TCG\Voyager\Models\Post::where('slug', $slug)->first();
         $title = $post->title ?? "";
-        $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->where('category_id', 1)->limit(6)->get();
-        //    dd($recentNew);
+        $posts = \TCG\Voyager\Models\Post::where('status', 'PUBLISHED')->orderBy('id', 'DESC')->where('category_id', 1)->limit(6)->get();
+        $videos = \App\Event::where('status', 'ACTIVE')->where('type', 'video')->limit(2)->orderBy('id', 'DESC')->get();
         $pageMeta = [
             'title' => $title,
             'meta_description' => $post->meta_description,
             'image' => $post->image,
         ];
-        return view('screens.posts.show', compact('post', 'title', 'posts', 'pageMeta'));
+        return view('screens.posts.show', compact('post', 'title', 'posts', 'pageMeta','videos'));
     }
 
-    public function search(Request $request)
+    public function searchPost(Request $request)
     {
         $key_form = $request->key;
         $key = str_replace(' ', '%', $key_form);
